@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngoni Shaani | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-mono { font-family: 'Fira Code', monospace; }
+        .theme-bg { background-color: var(--bg-color); }
+        .theme-text { color: var(--primary-color); }
+        .theme-primary { background-color: var(--primary-color); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <div id="root"></div>
+    <script>
+        // Injected Data
+        const data = {"name":"Ngoni Shaani","title":"Data Scientist & Data Analyst","bio":"Experienced Data Scientist and Data Analyst currently pursuing a Master of Science in Computer Science. Proven track record in leveraging Python, SQL, and machine learning to drive business insights, improve lead targeting accuracy by 22%, and increase audience engagement by 35%. Expertise spans across building ML pipelines, automated analytics workflows, and RAG systems.","experience":[{"company":"iGlow Media Studios","role":"Data Analyst","period":"Aug 2023 – Dec 2024","description":["Led and executed website and audience performance tracking by leveraging Google Analytics, Google Trends, and platform insights dashboards, generating data-driven recommendations that improved audience engagement by 35%.","Collaborated with design (Figma, Canva) and content teams to interpret user-behavior data and align content strategy with performance findings, increasing lead generation by 28% and strengthening overall brand visibility."]},{"company":"Advanced Furnace Technology","role":"Data Scientist","period":"Feb 2022 – Jul 2023","description":["Designed and communicated data-driven insights using Python (Pandas, NumPy) and Google Analytics, helping sales and marketing teams understand customer inquiry trends and improving qualified lead targeting accuracy by 22%.","Built clear and concise performance reports for stakeholders using visualization tools (Matplotlib, Seaborn), improving leadership decision-making.","Designed and executed A/B testing experiments to evaluate landing-page performance and inquiry-form interactions, informing changes that improved conversion rates by 18%."]}],"skills":[{"category":"Languages","items":["Python","Java","C#","HTML5","JavaScript","PHP","C","SQL","R"]},{"category":"Cloud, DevOps & Infrastructure","items":["AWS","Azure","Docker","Git/GitHub","Snowflake","CI/CD"]},{"category":"Data Science, ML & Data Engineering","items":["Algo Trading","Machine Learning","Data Analytics","Web Scraping","ETL & Data Pipelines","Automation","Containers (Docker)","Tableau","Power BI","Apache Airflow","Excel"]}],"education":[{"degree":"Master of Science in Computer Science","school":"Yeshiva University, Katz School of Science and Health","year":"Expected December 2026"},{"degree":"Bachelor of Science in Computer Science","school":"Midlands State University","year":"August 2023"}],"email":"nshaani@mail.yu.edu","location":"Jersey City, NJ 0705","phone":"201 993 5200","projects":[{"name":"ML-Based Trading Strategy","tech":["Python","Airflow","DuckDB","Yahoo Finance API","Alpaca API","NLTK","Transformers","SQL"]},{"name":"A.I Based CCTV Monitoring and Alert System","tech":["SmolVLM","AI Vision","Video Analytics"]},{"name":"Ask-the-10K Financial RAG Assistant","tech":["Python","Requests","BeautifulSoup","LangChain","FAISS","Sentence Transformers","Docker"]},{"name":"Tobacco Auction Floor Pricing Analytics","tech":["Python","Pandas","NumPy","Scikit-Learn","Power BI"]}],"socials":{"linkedin":"LinkedIn","twitter":""},"website":"Portfolio"};
+        const config = {"template":"developer","theme":"emerald","font":"mono"};
+        
+        // This script would ideally contain the React logic or 
+        // a static rendering of the chosen template. 
+        // For the "True Deployment", we'll provide a high-fidelity static render.
+        
+        document.body.innerHTML = `
+           <div class="${config.font === 'serif' ? 'font-serif' : config.font === 'mono' ? 'font-mono' : ''} min-h-screen bg-white">
+              <header class="py-20 px-6 sm:px-12 bg-indigo-50">
+                  <div class="max-w-4xl mx-auto">
+                      <h1 class="text-5xl font-bold mb-4">${data.name}</h1>
+                      <p class="text-2xl text-indigo-600 font-medium mb-6">${data.title}</p>
+                      <p class="text-lg text-slate-600 max-w-2xl">${data.bio}</p>
+                  </div>
+              </header>
+              <main class="max-w-4xl mx-auto py-16 px-6 sm:px-12 space-y-20">
+                  <section>
+                      <h2 class="text-2xl font-bold mb-8">Experience</h2>
+                      <div class="space-y-12">
+                          ${data.experience.map(exp => `
+                              <div class="border-l-2 border-slate-100 pl-8 relative">
+                                  <h3 class="text-xl font-bold">${exp.role}</h3>
+                                  <p class="text-indigo-600 font-semibold">${exp.company}</p>
+                                  <p class="text-sm text-slate-400 mb-4">${exp.period}</p>
+                                  <ul class="list-disc list-inside text-slate-600 space-y-1">
+                                      ${exp.description.map(d => `<li>${d}</li>`).join('')}
+                                  </ul>
+                              </div>
+                          `).join('')}
+                      </div>
+                  </section>
+                  <section>
+                      <h2 class="text-2xl font-bold mb-8">Skills</h2>
+                      <div class="flex flex-wrap gap-2">
+                          ${data.skills.flatMap(s => s.items).map(skill => `
+                              <span class="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-sm font-medium">${skill}</span>
+                          `).join('')}
+                      </div>
+                  </section>
+              </main>
+              <footer class="py-12 border-t border-slate-100 text-center text-slate-400 text-sm">
+                  Created with PortfoliAI
+              </footer>
+           </div>
+        `;
+    </script>
+</body>
+</html>
+  
